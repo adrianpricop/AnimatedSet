@@ -254,7 +254,7 @@ class ContainerView: UIView{
                              animations: {
                                 button.frame = self.grid[index]!
                                 button.isHidden = false
-                                self.animating = true
+
                                 self.layoutIfNeeded()
             },
                              completion:{ (finished) -> Void in UIView.transition(with: button,
