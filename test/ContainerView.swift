@@ -16,99 +16,63 @@ class ContainerView: UIView{
 
     
     var delegate : DidFinishAnimating?
-    
     var animating = false
-    
     var finisanimating = false
-    
     var selectedCards = [Int:Card]()
-
-
+    var buttonDeckFrame = CGRect()
+    var buttonDiscardPile = UIButton()
+    var buttonsToAnimate = [DrawButton]()
+    var buttons = [DrawButton]()
+    var grid = Grid(layout: Grid.Layout.aspectRatio(8/5))
     
-    var inPlayCards = [Card]()
-    {
-        willSet
-        {
-            if newValue.count > inPlayCards.count
-            {
+    var inPlayCards = [Card]() {
+        willSet {
+            if newValue.count > inPlayCards.count {
                 grid.cellCount = newValue.count
-                
             }
         }
-        didSet
-        {
-            if selectedCards.count != 0
-            {
-                if inPlayCards.count == buttons.count && inPlayCards.count < 13
-                {
+        didSet {
+            if selectedCards.count != 0 {
+                if inPlayCards.count == buttons.count && inPlayCards.count < 13 {
                     removeCards(for: true)
-                }else if inPlayCards.count < buttons.count
-                {
+                }else if inPlayCards.count < buttons.count {
                     removeCards(for: false)
                 }
-            }else if inPlayCards.count == oldValue.count
-            {
+            }else if inPlayCards.count == oldValue.count {
                 updateCards()
             }
         }
     }
     
-    var buttonDeckFrame = CGRect()
-    
-    var buttonDiscardPile = UIButton()
-    
-    var buttonsToAnimate = [DrawButton]()
-    
-    var numberOfButtons: Int = 0
-    {
-        didSet
-        {
-            
-            if numberOfButtons > 0 && !animating
-            {
+    var numberOfButtons: Int = 0 {
+        didSet {
+            if numberOfButtons > 0 && !animating {
                 finisanimating = false
                 uppdateView()
                 addCardButtons()
-            }else if numberOfButtons == 0
-            {
+            }else if numberOfButtons == 0 {
                 finisanimating = true
                 DidFinishAnimating()
                 uppdateView()
-
-                
             }
-
         }
     }
     
-    var buttons = [DrawButton]()
-    
-    var grid = Grid(layout: Grid.Layout.aspectRatio(8/5))
-    
     func DidFinishAnimating() {
-
-
-            delegate?.FinishedAnimating()
-
+        delegate?.FinishedAnimating()
     }
     
-    private var centerRect: CGRect
-    {
-        get
-        {
+    private var centerRect: CGRect {
+        get {
             return CGRect(x: bounds.size.width * 0.025, y: bounds.size.height * 0.025, width: bounds.size.width * 0.95, height: bounds.size.height * 0.95)
         }
     }
-    
-    
-    
-    override func layoutSubviews()
-    {
+
+    override func layoutSubviews() {
         grid.frame = centerRect
     }
     
-    func uppdateView()
-    {
+    func uppdateView() {
         for index in buttons.indices {
             let button = buttons[index]
             if let frame = grid[index] {
@@ -121,23 +85,18 @@ class ContainerView: UIView{
         }
     }
     
-    
-    func addCardButtons()
-    {
+    func addCardButtons() {
         let cardButtons = (0..<1).map { _ in DrawButton() }
         let button = cardButtons.last!
         button.frame = buttonDeckFrame
-
         button.layer.cornerRadius = 10
         button.layer.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         button.layer.borderWidth = 2
 
         addSubview(button)
-
         buttons.append(button)
         
-
         UIView.animate(withDuration: 0.2,
                        animations: {
                         button.frame = self.grid[self.buttons.count - 1]!
@@ -157,8 +116,7 @@ class ContainerView: UIView{
 
     }
     
-    func updateCards()
-    {
+    func updateCards() {
         if buttons.count == inPlayCards.count
         {
             for (index, button) in buttons.enumerated()
@@ -168,12 +126,9 @@ class ContainerView: UIView{
         }
     }
 
-
-    func removeCards(for state: Bool)
-    {
+    func removeCards(for state: Bool) {
         var count = 3
-        for (index,_) in selectedCards
-        {
+        for (index,_) in selectedCards {
             let button = buttons[index]
             
             UIView.transition(with: button,
@@ -218,34 +173,27 @@ class ContainerView: UIView{
         
     }
     
-    func removeButton()
-    {
+    func removeButton() {
         var buttonRemoved = false
         grid.cellCount -= 1
         var index = 0
-        while index < buttons.count && !buttonRemoved
-        {
-            if buttons[index].cardToDraw == nil
-            {
+        while index < buttons.count && !buttonRemoved {
+            if buttons[index].cardToDraw == nil {
                 let button = buttons[index]
                 button.removeFromSuperview()
                 buttons.remove(at: index)
                 buttonRemoved = true
-            }else
-            {
+            }else {
                 index += 1
             }
         }
         selectedCards.removeAll()
-
         numberOfButtons = 0
     }
     
     
-    func replaceButtons()
-    {
-        for (index,_) in selectedCards
-        {
+    func replaceButtons() {
+        for (index,_) in selectedCards {
             let button = buttons[index]
 
             UIButton.animate(withDuration: 0.5,
@@ -254,7 +202,6 @@ class ContainerView: UIView{
                              animations: {
                                 button.frame = self.grid[index]!
                                 button.isHidden = false
-
                                 self.layoutIfNeeded()
             },
                              completion:{ (finished) -> Void in UIView.transition(with: button,
@@ -265,34 +212,18 @@ class ContainerView: UIView{
             })
 
         }
-
         selectedCards.removeAll()
-        
         numberOfButtons = 0
     }
 
 
     
-    func removeAllButtons()
-    {
-        for button in buttons
-        {
+    func removeAllButtons() {
+        for button in buttons {
             button.removeFromSuperview()
         }
         grid.cellCount = 0
         buttons.removeAll()
         inPlayCards.removeAll()
     }
-    
-//    func shuffle()
-//    {
-//        for index in buttons.indices
-//        {
-//            let button = buttons[index]
-//            
-//    }
-
-
-    
-
 }
