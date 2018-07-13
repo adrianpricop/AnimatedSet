@@ -34,99 +34,75 @@ class ViewController: UIViewController, DidFinishAnimating
         cardsContainerView.buttonDiscardPile = showSetButton
         cardsContainerView.inPlayCards = game.inPlayCards
         cardsContainerView.numberOfButtons += game.inPlayCards.count
-        
         updateViewFromModel()
-
-        
-        
     }
     
         
     @IBOutlet var draw3Cards: UISwipeGestureRecognizer!
     
     @IBAction func draw3Cards(_ sender: UISwipeGestureRecognizer) {
-        if game.deck.count > 2
-        {
+        if game.deck.count > 2 {
             game.drawThreeCards()
             cardsContainerView.inPlayCards = game.inPlayCards
             cardsContainerView.numberOfButtons += 3
             updateViewFromModel()
-            
         }
-        if game.deck.count < 3
-        {
+        if game.deck.count < 3 {
             drawThreeCardsButton.isHidden = true
         }
         drawThreeCardsButton.isEnabled = false
         showSetButton.isEnabled = false
         newGameButton.isEnabled = false
     }
+    
     @IBOutlet var shuffleCards: UIRotationGestureRecognizer!
+    
     @IBAction func shuffleCards(_ sender: Any) {
 //        game.shuffleCards()
 //        updateViewFromModel()
 //        cardsContainerView.inPlayCards = game.inPlayCards
         
     }
+    
     @IBOutlet weak var cardsContainerView: ContainerView!
-    
-    
-    
     @IBOutlet weak var drawThreeCardsButton: UIButton!
-    
     @IBOutlet weak var showSetButton: UIButton!
-    
     @IBOutlet weak var newGameButton: UIButton!
-    
     @IBOutlet weak var scoreBord: UILabel!
     
     var game = SetGame()
     
-    func FinishedAnimating()
-    {
+    func FinishedAnimating() {
         addTaregetFunc()
         drawThreeCardsButton.isEnabled = true
         showSetButton.isEnabled = true
         newGameButton.isEnabled = true
     }
     
-    
-    @IBAction func newGameButton(_ sender: UIButton)
-    {
+    @IBAction func newGameButton(_ sender: UIButton) {
         game.newGame()
         cardsContainerView.inPlayCards.removeAll()
         cardsContainerView.removeAllButtons()
-        
         cardsContainerView.inPlayCards = game.inPlayCards
         cardsContainerView.numberOfButtons = game.inPlayCards.count
-
         drawThreeCardsButton.isHidden = false
-
-        
     }
     
-    @IBAction func showSet(_ sender: UIButton)
-    {
-        if game.findSet()
-        {
+    @IBAction func showSet(_ sender: UIButton) {
+        if game.findSet() {
             updateViewFromModel()
             cardsContainerView.inPlayCards = game.inPlayCards
         }
-        
     }
     
-    @IBAction func drawThreeCards(_ sender: UIButton)
-    {
-        if game.deck.count > 2
-        {
+    @IBAction func drawThreeCards(_ sender: UIButton) {
+        if game.deck.count > 2 {
             game.drawThreeCards()
             cardsContainerView.inPlayCards = game.inPlayCards
             cardsContainerView.numberOfButtons += 3
             updateViewFromModel()
-
         }
-        if game.deck.count < 3
-        {
+        if game.deck.count < 3 {
             drawThreeCardsButton.isHidden = true
         }
         drawThreeCardsButton.isEnabled = false
@@ -134,45 +110,32 @@ class ViewController: UIViewController, DidFinishAnimating
         newGameButton.isEnabled = false
     }
 
-    func addTaregetFunc()
-    {
-        for button in cardsContainerView.buttons
-        {
+    func addTaregetFunc() {
+        for button in cardsContainerView.buttons {
             button.addTarget(self, action: #selector(didTapCard), for: .touchUpInside)
         }
     }
 
-    @objc func didTapCard(sender: UIButton)
-    {
-        
+    @objc func didTapCard(sender: UIButton) {
         let index = cardsContainerView.buttons.index(of: sender as! DrawButton)!
         game.selectCard(at: index)
-        if game.selectedCards.count == 3
-        {
+        if game.selectedCards.count == 3 {
             cardsContainerView.inPlayCards = game.inPlayCards
-            if game.isSet(for: game.selectedCards)
-            {
+            if game.isSet(for: game.selectedCards) {
                 cardsContainerView.selectedCards = game.selectedCards
                 game.verifySelectedCards()
                 cardsContainerView.inPlayCards = game.inPlayCards
             }
-            
-        }else
-        {
+        }else {
             cardsContainerView.inPlayCards = game.inPlayCards
         }
         updateViewFromModel()
         
     }
-    func updateViewFromModel()
-    {
+    func updateViewFromModel() {
         let score = game.score
         scoreBord.text = "score: \(score)"
-        
-
-    }
-    
-    
+    }    
 }
 
 

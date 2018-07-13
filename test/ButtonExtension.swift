@@ -11,20 +11,17 @@ import UIKit
 
 extension UIButton
 {
-    func select()
-    {
+    func select() {
         self.layer.borderWidth = 2
         self.layer.borderColor = #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)
     }
     
-    func deselect()
-    {
+    func deselect() {
         self.layer.borderWidth = 2
         self.layer.borderColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
     }
     
-    func noSelect()
-    {
+    func noSelect() {
         self.layer.borderWidth = 0
         self.layer.cornerRadius = 10
     }

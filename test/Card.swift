@@ -10,7 +10,6 @@ import Foundation
 
 
 struct Card: Hashable {
-    
 
     var matching = false
     var isSelected = false
