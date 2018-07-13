@@ -21,55 +21,39 @@ struct Card: Hashable {
     let cardNumber: CardNumber
     let cardShading: CardShading
     
-    var hashValue: Int
-    {
+    var hashValue: Int {
         return identifier.hashValue
     }
     
-    static func == (lhs: Card ,rhs: Card) ->Bool
-    {
+    static func == (lhs: Card ,rhs: Card) ->Bool {
         return lhs.identifier == rhs.identifier
     }
-    
-//    static var identifierFactori = 0
-//
-//    static func getUnoqueIdentifier() -> Int
-//    {
-//        identifierFactori += 1
-//        return identifierFactori
-//    }
-//
-//    init()
-//    {
-//        self.identifier = Card.getUnoqueIdentifier()
-//    }
-    
-    enum CardSimbol
-    {
+
+    enum CardSimbol {
         case diamond
         case oval
         case squiggle
 
         static let allValues = [diamond, oval, squiggle]
     }
-    enum CardColor
-    {
+    
+    enum CardColor {
         case red
         case green
         case purple
 
         static let allValues = [red, green, purple]
     }
-    enum CardNumber
-    {
+    
+    enum CardNumber {
         case one
         case two
         case three
 
         static let allValues = [one, two, three]
     }
-    enum CardShading
-    {
+    
+    enum CardShading {
         case full
         case empty
         case stripped
