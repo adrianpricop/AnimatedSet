@@ -12,7 +12,7 @@ protocol DidFinishAnimating {
     func FinishedAnimating()
 }
 
-class ContainerView: UIView{
+class ContainerView: UIView {
 
     
     var delegate : DidFinishAnimating?

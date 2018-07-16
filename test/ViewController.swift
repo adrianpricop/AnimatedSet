@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, DidFinishAnimating
-{
+class ViewController: UIViewController, DidFinishAnimating {
     override func viewDidLoad() {
         super.viewDidLoad()
         game.cardGenerator()
