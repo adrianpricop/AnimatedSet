@@ -12,31 +12,18 @@ class ViewController: UIViewController, DidFinishAnimating {
     override func viewDidLoad() {
         super.viewDidLoad()
         game.cardGenerator()
-        drawThreeCardsButton.noSelect()
-        showSetButton.noSelect()
-        newGameButton.noSelect()
-        scoreBord.layer.masksToBounds = true
-        scoreBord.layer.cornerRadius = 10
         cardsContainerView.inPlayCards = game.inPlayCards
         updateViewFromModel()
         cardsContainerView.delegate = self
-        drawThreeCardsButton.isEnabled = false
-        showSetButton.isEnabled = false
-        newGameButton.isEnabled = false
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        cardsContainerView.buttonDeckFrame = CGRect(x: drawThreeCardsButton.frame.origin.x ,
-                                                y: drawThreeCardsButton.frame.origin.y - drawThreeCardsButton.frame.height - 8 ,
-                                                width: drawThreeCardsButton.frame.width,
-                                                height: drawThreeCardsButton.frame.height)
-        cardsContainerView.buttonDiscardPile = showSetButton
         cardsContainerView.inPlayCards = game.inPlayCards
         cardsContainerView.numberOfButtons += game.inPlayCards.count
         updateViewFromModel()
     }
     
-        
     @IBOutlet var draw3Cards: UISwipeGestureRecognizer!
     
     @IBAction func draw3Cards(_ sender: UISwipeGestureRecognizer) {
@@ -64,10 +51,35 @@ class ViewController: UIViewController, DidFinishAnimating {
     }
     
     @IBOutlet weak var cardsContainerView: ContainerView!
-    @IBOutlet weak var drawThreeCardsButton: UIButton!
-    @IBOutlet weak var showSetButton: UIButton!
-    @IBOutlet weak var newGameButton: UIButton!
-    @IBOutlet weak var scoreBord: UILabel!
+    @IBOutlet weak var drawThreeCardsButton: UIButton! {
+        didSet {
+            drawThreeCardsButton.noSelect()
+            cardsContainerView.buttonDeckFrame = CGRect(x: drawThreeCardsButton.frame.origin.x ,
+                                                        y: drawThreeCardsButton.frame.origin.y - drawThreeCardsButton.frame.height - 8 ,
+                                                        width: drawThreeCardsButton.frame.width,
+                                                        height: drawThreeCardsButton.frame.height)
+        }
+    }
+    
+    @IBOutlet weak var showSetButton: UIButton! {
+        didSet {
+            showSetButton.noSelect()
+            cardsContainerView.buttonDiscardPile = showSetButton
+        }
+    }
+    
+    @IBOutlet weak var newGameButton: UIButton! {
+        didSet {
+            newGameButton.noSelect()
+        }
+    }
+    
+    @IBOutlet weak var scoreBord: UILabel! {
+        didSet {
+            scoreBord.layer.masksToBounds = true
+            scoreBord.layer.cornerRadius = 10
+        }
+    }
     
     var game = SetGame()
     
@@ -131,6 +143,7 @@ class ViewController: UIViewController, DidFinishAnimating {
         updateViewFromModel()
         
     }
+    
     func updateViewFromModel() {
         let score = game.score
         scoreBord.text = "score: \(score)"

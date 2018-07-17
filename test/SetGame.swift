@@ -9,6 +9,7 @@
 import Foundation
 
 class SetGame {
+
     var inPlayCards = [Card]()
     var deck = [Card]()
     var score = 0
