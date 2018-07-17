@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GraphicSet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwq-bO-nCm">
+                                <rect key="frame" x="10" y="686.66666666666663" width="152.66666666666666" height="36"/>
+                                <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Show Set">
+                                    <color key="titleColor" red="0.019250918179750443" green="0.015419008210301399" blue="0.008230157196521759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showSet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P88-wR-F9f"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iaw-jY-GMv">
+                                <rect key="frame" x="10" y="732.66666666666663" width="152.66666666666666" height="35.333333333333371"/>
+                                <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Om3-3n-LPy">
+                                <rect key="frame" x="212.66666666666663" y="732" width="152.33333333333337" height="36"/>
+                                <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="newGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AUM-59-Lu8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vs3-8n-UPi">
+                                <rect key="frame" x="212.66666666666663" y="686" width="152.33333333333337" height="36"/>
+                                <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Draw 3 cards">
+                                    <color key="titleColor" red="0.019250918179750443" green="0.015419008210301399" blue="0.008230157196521759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="drawThreeCards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="an1-bt-NQt"/>
+                                </connections>
+                            </button>
+                            <containerView opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tOS-0a-cAy" customClass="ContainerView" customModule="GraphicSet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="375" height="632.66666666666663"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Om3-3n-LPy" secondAttribute="trailing" priority="500" constant="10" id="2OP-h2-s7F"/>
+                            <constraint firstItem="lwq-bO-nCm" firstAttribute="width" secondItem="Iaw-jY-GMv" secondAttribute="width" id="5WO-m6-ChI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tOS-0a-cAy" secondAttribute="trailing" id="CsH-Pw-Gbi"/>
+                            <constraint firstItem="Iaw-jY-GMv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="500" constant="10" id="N3h-7P-qyu"/>
+                            <constraint firstItem="vs3-8n-UPi" firstAttribute="width" secondItem="lwq-bO-nCm" secondAttribute="width" id="Qx2-pH-GCY"/>
+                            <constraint firstItem="tOS-0a-cAy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="RBW-uk-yTf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Om3-3n-LPy" secondAttribute="bottom" constant="10" id="Tsg-PG-s0P"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Iaw-jY-GMv" secondAttribute="bottom" constant="10" id="Uqm-Jj-qMw"/>
+                            <constraint firstItem="lwq-bO-nCm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="500" constant="10" id="Usv-Xj-EED"/>
+                            <constraint firstItem="vs3-8n-UPi" firstAttribute="leading" secondItem="lwq-bO-nCm" secondAttribute="trailing" constant="50" id="X6m-wc-1Mu"/>
+                            <constraint firstItem="lwq-bO-nCm" firstAttribute="top" secondItem="tOS-0a-cAy" secondAttribute="bottom" constant="10" id="cZx-av-XTJ"/>
+                            <constraint firstItem="vs3-8n-UPi" firstAttribute="height" secondItem="lwq-bO-nCm" secondAttribute="height" id="caN-I7-0hW"/>
+                            <constraint firstItem="Om3-3n-LPy" firstAttribute="height" secondItem="Iaw-jY-GMv" secondAttribute="height" id="dQr-p5-PVT"/>
+                            <constraint firstItem="Om3-3n-LPy" firstAttribute="width" secondItem="Iaw-jY-GMv" secondAttribute="width" id="fm1-XM-weW"/>
+                            <constraint firstItem="tOS-0a-cAy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gyM-UM-SmD"/>
+                            <constraint firstItem="Om3-3n-LPy" firstAttribute="leading" secondItem="Iaw-jY-GMv" secondAttribute="trailing" constant="50" id="haa-HV-wYd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vs3-8n-UPi" secondAttribute="trailing" priority="500" constant="10" id="kt0-dg-B54"/>
+                            <constraint firstItem="Om3-3n-LPy" firstAttribute="top" secondItem="vs3-8n-UPi" secondAttribute="bottom" constant="10" id="lXw-JD-l5N"/>
+                            <constraint firstItem="lwq-bO-nCm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-25" id="pml-So-yHr"/>
+                            <constraint firstItem="Iaw-jY-GMv" firstAttribute="centerX" secondItem="lwq-bO-nCm" secondAttribute="centerX" id="qiv-Vv-5zi"/>
+                            <constraint firstItem="lwq-bO-nCm" firstAttribute="height" secondItem="Iaw-jY-GMv" secondAttribute="height" id="rRI-Jx-qVw"/>
+                            <constraint firstItem="Iaw-jY-GMv" firstAttribute="top" secondItem="lwq-bO-nCm" secondAttribute="bottom" constant="10" id="zBK-x2-pD1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="rbY-VC-pJh" appends="YES" id="4mZ-jp-mdg"/>
+                            <outletCollection property="gestureRecognizers" destination="2iC-9M-3g9" appends="YES" id="PH6-2I-02Z"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="cardsContainerView" destination="tOS-0a-cAy" id="ilF-fb-g3W"/>
+                        <outlet property="draw3Cards" destination="rbY-VC-pJh" id="HbR-ft-cXC"/>
+                        <outlet property="drawThreeCardsButton" destination="vs3-8n-UPi" id="0EU-w7-NNA"/>
+                        <outlet property="newGameButton" destination="Om3-3n-LPy" id="HdK-VR-KIZ"/>
+                        <outlet property="scoreBord" destination="Iaw-jY-GMv" id="Jiz-j1-JSh"/>
+                        <outlet property="showSetButton" destination="lwq-bO-nCm" id="oq2-OH-a84"/>
+                        <outlet property="shuffleCards" destination="2iC-9M-3g9" id="ZpM-n6-O9q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="rbY-VC-pJh">
+                    <connections>
+                        <action selector="draw3Cards:" destination="BYZ-38-t0r" id="Mjc-dE-LsB"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <rotationGestureRecognizer id="2iC-9M-3g9">
+                    <connections>
+                        <action selector="shuffleCards:" destination="BYZ-38-t0r" id="RCc-Pf-1HF"/>
+                    </connections>
+                </rotationGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="32.512315270935964"/>
+        </scene>
+    </scenes>
+</document>
